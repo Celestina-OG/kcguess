@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+</head>
+<style>
+    .main{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 255, 0.541);
+    }
+    .board{
+        width: 50%;
+        height: 70vh;
+        /* border: 1px solid black; */
+        border-radius: 0 20px 0 20px;
+        box-shadow: 4px 4px  5px gray , -4px -4px  5px gray ;
+        background-color: white;
+       
+    }
+    .headin{
+        text-align: center;
+        font-size: 18px;
+        color: blue;
+        font-weight: 600;
+        font-family: monospace;
+        font-style: italic;
+        margin-top: 2%;
+    }
+    .input_div{
+        width: 90%;
+        height: 5vh;
+        border-radius: 10px;
+        border: 2px solid blue;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5%;
+    }
+    .input1{
+        width: 96%;
+        height: 30px;
+        border: none;
+        outline: none;
+        text-align: center;
+        color: blue;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .btn-div{
+        width: 90%;
+        height: 5vh;
+        border-radius: 10px;
+        /* border: 2px solid blue; */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 6%;
+
+    }
+    .btn{
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        border: 1px solid blue;
+        background-color: transparent;
+        font-size: 25px;
+        color: blue;
+        font-weight: 700;
+        font-family: monospace;
+        font-style: italic;
+        box-shadow: 3px 3px 4px grey;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: grey;
+        color: red;
+    }
+    .display_borad{
+        width: 90%;
+        height: 15vh;
+        /* border: 1px solid black; */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .display1{
+        width: 45%;
+        height: 15vh;
+        border: 1px solid blue;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: aqua;
+        font-size: 45px;
+        font-weight: 800;
+
+
+    }
+    .display2{
+        width: 45%;
+        height: 15vh;
+        border: 1px solid blue;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 45px;
+        font-weight: 800;
+        
+    }
+    .result{
+        width: 90%;
+        height: 6vh;
+        border: 1px solid blue;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2%;
+        background-color: blue;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+
+        
+    }
+    .namee{
+        text-align: center;
+    color: blue;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 2%;
+    }
+    @media (max-width:450px) { 
+        .board{
+            width: 95%;
+            height: 60vh;
+        }
+
+    }
+
+</style>
+<body>
+    <div class="main">
+        <div class="board">
+            <div class="headin">Guess With Us (Number within 1-5)</div>
+            <div class="result"></div>
+            <div class="display_borad">
+                <div class="display1"></div>
+                <div class="display2"></div>
+            </div>
+            <div class="input_div">
+                <input class="input1" type="number">
+            </div>
+            <div class="btn-div">
+                <button class="btn" onclick="chheck()">Check</button>
+            </div>
+            
+            <div class="namee">Dev_by_Gmor😍</div>
+
+            
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    let box = document.querySelector('.input1');
+    let result = document.querySelector('.result');
+    let display1 = document.querySelector('.display1');
+    let display2 = document.querySelector('.display2');
+    
+
+    // console.log(Math.floor(Math.random()*6));
+
+    function chheck() {
+
+        let RandomNo = Math.floor(Math.random()*6);
+        // console.log(RandomNo);
+
+        if (box.value > 5) {
+            return alert('Number is greater than 5')
+        }
+
+        else{
+            if (RandomNo == 0) {
+            RandomNo += 1;
+            // console.log(RandomNo); 
+        }
+
+        if (box.value == RandomNo ) {
+            result.innerHTML = 'CORRECT 👍'
+            display1.style.backgroundColor = 'green'
+            display2.style.backgroundColor = 'green'
+
+            // console.log('correct');
+        }
+        else{
+            result.innerHTML = `Whoops!! 😂❌ <br> Try again`;
+            display1.style.backgroundColor = 'red'
+            display2.style.backgroundColor = 'yellow'
+
+            // console.log('try again later');
+        }
+         
+        display1.innerHTML = box.value;
+        display2.innerHTML = `${RandomNo}` ;
+
+        box.value = ''
+        }
+        
+        
+    }
+</script>
